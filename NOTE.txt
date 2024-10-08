@@ -1,0 +1,140 @@
+                                    -------------------------------------------------
+                                        REACT - FRONT END TECHNOLOGY : JS LIBRARY
+                                    -------------------------------------------------
+
+        1. React Basic Components
+            - react app used to build a single page application
+            - react app is a collection of components, components used to display content in browser, all components are arranged as a tree stucture in react app, root node / root component of react app will always 'App' Component
+            - Pure Function : used to build components, which does not cause side effects
+            - Declarative approach
+            - virtual DOM : light weight representation of real DOM , it helps faster loading of contents in app
+            - babel library : transiple react code to simple react functions which is understood by browser 
+            - JSX (JAVASCRIPT XML - JAVASCRIPT extenstion for HTML code) used to display contents in browser 
+                - JSX elements : const heading = <h1>heading</h1>
+                - rules of JSX code 
+                    - every JSX element must be in a parent/container tag, this container tag can be div/section/article... or react fragment(tag without name) <></>
+                    - every JSX element must have an ending/closing tag, <tag-name>content</tag-name>, <tag-name/> (self-closing tag : used to represent tag without content)
+                    - JSX follow came case (if a word has 2 words then second word first letter must be in capital case)
+                    - instead of using attribute 'class' use 'className'
+                    - instead of using attribute 'for' use 'htmlFor'
+                    - use JS code directly in JSX, use {} to provide JS code in JSX, ex: {js code}
+        2. React app creation 
+            - CRA (using create-react-app command)
+            - Vite : is a web project building tool
+                - install vite globally : npm i -g create-vite
+                - react app using vite : npm create vite@latest reactAppName -- --template react
+                - to run react app using vite : npm run dev 
+        3. Files & folder structure of react app using vite
+            - package.json file : npm configuration file 
+            - package lock.json file : used to store version history of packages used in the project
+            - .gitignore file : used to mention data to be ignored while adding to git 
+            - eslint.config.js file : js configuration
+            - index.html : entry point, its body must contain a div with id as root, include main.jsx file using script
+            - node_modules folder : used to store external package dependencies in local project (if you have package.json file then to generate node_modules use command : 'npm install')
+            - public folder : data inside public folder available globally in project
+            - src folder : source folder, we will define logic of react app here
+                - main.jsx file : createRoot used to render react app in DOM element with id as root
+                - index.css / App.css files: used to style jsx elements
+                - App.jsx file : root component of react app
+                - assets folder : used to store media files used in our react app
+        4. Components in react : used to display contents in browser
+            - To create a component in react : 2 ways, create js/jsx file, and its filename must be start with capital letter
+                - Functional based components : use js pure function with its name same as its file and function must return jsx code
+                - Class based components :
+            - difference between class and functional based components 
+                class based Components                           functional based components
+            ---------------------------------------------------------------------------------------
+            1. using js class inherit from react           1. using js pure function and return jsx
+                component, and render jsx
+            2. component will live depending on            2. it executes from top to bottom,once 
+                different life cycle methods                   it returns, it cannot be alive
+            3. stateful component                          3. stateless component
+            4. do not use hooks                            4. hooks are used 
+            5. lifecycle methods available                 5. lifecycle methods are not available
+            6. use render method to display                6. no need to use render method
+                jsx into DOM
+            7. use constructor to initialise state         7. no need to use constructor
+        5. Data Sharing in react app
+            - Parent to child data sharing : child can access data from parent using 'props'
+        6. Props in react : props means property of a component, and props will be argument of that components, and it type is object, used to transfer data from parent to child
+        7. conditional Rendering : based on a condition display jsx elements into browser, use if (&&), if-else (?:) these operator to render jsx into browser
+        8. CSS styling in react : 
+            - inline css in jsx: using style attribute, can pass style as an object, style={{property:value}}
+            - external css: define css style in an external file and to apply we have to import css file in the component
+                - import 'css file path'
+            - css module file : use extension .module.css file, here it can import to a variable in  a component define style using class in module css file
+        9. Events handling in react : according to each event jsx element has bind/call a function 
+            - calling function without arguments : event={functionName}
+            - calling function with arguments : event={()=>functionName(arg1,...)}
+            - calling function with argument as event : event={(event)=>functionName(event)}
+        10. Array in react jsx : use map method to display array in JSX, to uniquely identify each item use 'key' props
+        11. State : used to values in a component, whenever state changes the component will be re rendered
+            - to update state : use setState(value)
+        12.Lifecycle methods of react component 
+            - Mounting phase : putting component into DOM
+                - constructor()
+                - getDerivedStateFromProps()
+                - render()
+                - componentDidMount()
+            - Updating phase : when component Updating
+                - getDerivedStateFromProps()
+                - shouldComponentUpdate()
+                - render()
+                - getSnapshotBeforeUpdate()
+                - componentDidUpdate()
+            - unmounting phase : removing component from DOM
+                - componentWillUnmount()
+        13. React Hooks : used to provide react component features to functional based component, they are predefined functions, that function name must start with 'use' keyword, to use hooks in functional component must call it
+            - Rule to use hook in functional component 
+                - Import hook  from react in component
+                - call hooks in top level of a component
+                - hooks cannot be conditional
+            - Types of Hooks
+                - predefined hooks
+                    - useState(initial-value) : used to create state in functional component, it will return state value, function name to update state value and stored in an array
+                    - useEffect(side effect function,dependency) : generally used to provide side effects to the component
+                        - side effect function : used to define which side effect to be applied in component
+                        - dependency : used to control when useEffect hook must  call in a component
+                            - no dependency : useEffect hook will call the time in component (it become an infinite loop)
+                            - [] : useEffect hook will call only at the time of component creation
+                            - [state/props/variable] : useEffect hook will call at the time of component creation as well as changes in the value state/props/variable passed in the dependency
+                - custom hooks : userdefined hooks
+                    - create a function with a name starts with 'use'
+        14. External react component libraries 
+            - Material UI : npm install @mui/material @emotion/react @emotion/styled
+            - React Bootstrap : npm install react-bootstrap bootstrap , include a bootstrap theme (https://bootswatch.com/) to react app, download bootstrap.min.css the file and add to src folder, import file bootstrap.min.css into main.jsx file
+        15. Handling forms in react : react can handle forms in 2 ways
+            - Controlled component : In a component, form data is managed by component state
+            -  Uncontrolled Component : form data is managed by DOM reference in a component, to get reference use useRef hook in react
+        16. Set up path for component in react : use package - react-router-dom 
+                - install react-router-dom : npm i react-router-dom
+                - steps to setup path for component 
+                    - render react app inside 'BrowserRouter' component from react-router-dom library 
+                    - component need to setup path must be render inside 'Routes' component of react-router-dom inside App.jsx
+                    - to define path, we have to 'Route' component and use key as 'path' to define path and 'element' key to display the component
+                - Link component : used to redirect from one page to another without reloading current page
+        17. API call in React : using Axios library which return promise
+            - install Axios : npm i axios 
+            - create a folder in src for making all api call
+
+
+        --------------------------------------
+                JSON SERVER CREATION 
+        --------------------------------------
+
+        1. create a folder to store json file
+        2. create package.json (npm configuration file) file inside server folder : npm init -y 
+        3. install json-server package to run a json file : npm i json-server / npm i json-server@0.17.4
+        4. create db.json file inside server folder to store json data from front end application
+        5. to run json file and see output in http://localhost:3000/ : npx json-server db.json / node index.js
+
+
+        -----------------------------------------------
+                DEPLOYING A JSON FILE USING NODE 
+        -----------------------------------------------
+
+        1. create index.js file in server folder
+        2. update the script for starting command as     "start": "node index.js" in server package.json file
+        3. update json-server version to a stable one if it is a unstable version like alpha / beta version
+        4. create .gitignore file in order add node_modules folder
+        5. define json-server to run json file in index.js file
