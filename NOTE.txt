@@ -138,3 +138,10 @@
         3. update json-server version to a stable one if it is a unstable version like alpha / beta version
         4. create .gitignore file in order add node_modules folder
         5. define json-server to run json file in index.js file
+            - import json-server in index.js file
+            - create server for running json file for that use craete() from json-server package
+            - set up path for db.json file
+            - create middleware
+            - define a port for running json-server
+            - use middleware, router
+            - run server in given port to resolve client request
